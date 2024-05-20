@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Cookies from 'js-cookie';
 import axios from 'axios';
 import 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,9 +21,8 @@ const Login = () =>{
 
         try{
             const {data} = await axios.post("http://localhost:8000/token/", user)
-
-            Cookies.set('access_token', data.access);
-            Cookies.set('refresh_token', data.refresh);
+            localStorage.setItem('access_token', data.access);
+            localStorage.setItem('refresh_token', data.refresh);
             dispatch(toggleIsAuth())
             navigate("/");
         }

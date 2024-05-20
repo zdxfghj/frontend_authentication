@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -8,8 +8,8 @@ const Logout = () => {
   useEffect(() => {
     const logout = async () => {
       // Clear cookies
-      Cookies.remove('access_token');
-      Cookies.remove('refresh_token');
+      localStorage.clear()
+     
 
       // Redirect to the desired location
       navigate('/');
